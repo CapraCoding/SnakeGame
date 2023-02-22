@@ -25,15 +25,17 @@ while game_is_on:
     time.sleep(0.1)
     snake.move()
     if (snake.head.xcor() >= 500 or snake.head.xcor() <= -500) or (snake.head.ycor() > 400 or snake.head.xcor() <-400):
-        game_is_on = score.game_over()
+        score.reset()
+        snake.reset()
 
     if snake.head.distance(food) < 20:
         food.refresh()
         score.new_score(snake)
+
     for segment in snake.turtle_list[1:]:
         if snake.head.distance(segment.position()) < 10:
-            game_is_on = score.game_over()
-
+            score.reset()
+            snake.reset()
 
 
 screen.exitonclick()

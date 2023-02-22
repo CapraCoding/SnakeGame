@@ -13,8 +13,9 @@ class Snake:
         self.turtle_list = []
         self.create_snake()
         self.head = self.turtle_list[0]
-    def create_snake(self):
 
+
+    def create_snake(self):
         for positions in starting_positions:
             self.get_bigger(positions)
 
@@ -52,3 +53,10 @@ class Snake:
         turtle.penup()
         turtle.goto(position)
         self.turtle_list.append(turtle)
+
+    def reset(self):
+        for segment in self.turtle_list:
+            segment.goto(1000,1000)
+        self.turtle_list.clear()
+        self.create_snake()
+        self.head = self.turtle_list[0]
